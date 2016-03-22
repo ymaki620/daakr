@@ -13,34 +13,33 @@ using namespace Rcpp;
 // [[Rcpp::export]]
 double aucAk(LogicalVector response, NumericVector predictor){
     int len  = response.size();
-    //int len2 = predictor.size();
     if(len != predictor.size())return(-1.0);
     
     int cnt=0;
     for(int i=0;i<len;i++){
         if(response[i]==true)cnt++;
     }
-    double s_t[cnt];
-    double s_f[len-cnt];
-    int p_t=0;
-    int p_f=0;
+    double TP[cnt];
+    double TN[len-cnt];
+    int p_count=0;
+    int n_count=0;
     
     for(int i=0; i<len; i++){
         if(response[i]==true){
-            s_t[p_t] = predictor[i];
-            p_t++;
+            TP[p_count] = predictor[i];
+            p_count++;
         }else{
-            s_f[p_f] = predictor[i];
-            p_f++;
+            TN[n_count] = predictor[i];
+            n_count++;
         }
     }
     
     double auc=0.0;
     for(int i=0; i<cnt; i++){
         for(int j=0; j<len-cnt; j++){
-            if(s_t[i] > s_f[j]){
+            if(TP[i] > TN[j]){
                 auc += 1.0;
-            }else if(s_t[i] == s_f[j]){
+            }else if(TP[i] == TN[j]){
                 auc += 0.5;
             }
         }
