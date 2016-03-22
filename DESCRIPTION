@@ -8,3 +8,4 @@ Maintainer: ymaki620 <ymaki620@gmail.com>
 Description: More about what it does (maybe more than one line)
 License: MIT + file LICENSE
 Imports: Rcpp
+LinkingTo: Rcpp
