@@ -1,0 +1,10 @@
+Package: daakr
+Type: Package
+Title: What the package does (short line)
+Version: 1.0
+Date: 2016-03-23
+Author: ymaki620
+Maintainer: ymaki620 <ymaki620@gmail.com>
+Description: More about what it does (maybe more than one line)
+License: MIT + file LICENSE
+Imports: Rcpp
